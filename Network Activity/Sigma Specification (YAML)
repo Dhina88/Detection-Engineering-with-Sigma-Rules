@@ -1,0 +1,19 @@
+title: Suspicious DNS TXT Record Queries
+id: 3c1e90aa-9aa2-4df3-a129-923f001ee7c9
+status: experimental
+description: Detects a high volume of DNS queries seeking TXT records, which is a common pattern for DNS tunneling or Command and Control communication.
+author: Detection Engineer Specialist
+date: 2026/06/28
+tags:
+    - attack.command_and_control
+    - attack.t1071.004
+logsource:
+    product: windows
+    service: dns-client
+detection:
+    selection:
+        QueryType: 16 # Type TXT
+    condition: selection
+falsepositives:
+    - Legitimate enterprise applications utilizing DNS TXT verification lookups (e.g., Office 365 activation, SPF/DKIM verification checks).
+level: medium

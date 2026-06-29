@@ -1,0 +1,4 @@
+DnsEvents
+| where QueryType == "TXT"
+| summarize count() by QueryName, ClientIP
+| where count_ > 50

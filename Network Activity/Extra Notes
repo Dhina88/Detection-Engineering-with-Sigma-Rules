@@ -1,0 +1,5 @@
+Engineering Rationale & Analysis Tips:
+
+Why this matters: DNS traffic is often left unrestricted by internal firewalls. Attackers encode commands inside the TXT fields of domain responses to route traffic past inspection points.
+
+Triage Path: Look for randomized domain prefixes or large, high-entropy text strings returned in the DNS records.

@@ -1,0 +1,1 @@
+index=network sourcetype="preprocess_dns" QueryType=16
