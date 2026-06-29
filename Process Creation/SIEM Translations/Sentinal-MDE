@@ -1,0 +1,4 @@
+SecurityEvent
+| where EventID == 4688
+| where ProcessName endswith "\\powershell.exe" or ProcessName endswith "\\pwsh.exe"
+| where CommandLine has_any (" -enc", " -encodedcommand", " -e ", " -w hidden", " -windowstyle hidden", " -nop", " -noni")

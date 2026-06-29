@@ -1,0 +1,19 @@
+The 5 Attack Techniques (What the Bad Guys Are Doing)
+
+1.Process Creation (T1059 - Command & Scripting Interpreter): This is a sneaky cook (cmd.exe or powershell.exe) whispering hidden, encoded recipes to execute commands out of sight.
+
+2. Process Injection (T1055): A bad actor injects malicious instructions directly into the brain of a legitimate cook (svchost.exe or explorer.exe). Now, that trusted cook executes malicious actions under their legitimate identity.
+
+3. Credential Dumping (T1003 - OS Credential Dumping): An attacker breaks into the kitchen safe where usernames and passwords are stored, aiming to steal the master keys.
+
+4. Network Activity (T1071 - Application Layer Protocol): A malicious cook sends encrypted or hidden notes out the back door to a boss sitting in a completely different building (Command and Control/C2).
+
+5. Account Manipulation (T1098): An attacker sneakily changes the kitchen staff records, creating a new "manager" account or giving a low-level kitchen helper access to the master keys.
+
+Engineering Rationale & Analysis Tips
+Why this matters: Attackers obscure their payloads in Base64 strings via -EncodedCommand to bypass static string inspection.
+
+Triage Path: 
+1. Extract the Base64 payload from the command line.
+2. Use CyberChef to decode it (From Base64 -> Remove Null Bytes).
+3. Verify network calls or file drops initiated by the script.

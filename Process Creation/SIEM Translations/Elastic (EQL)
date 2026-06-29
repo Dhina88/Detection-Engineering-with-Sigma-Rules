@@ -1,0 +1,3 @@
+process where event.code == "1" and
+  process.name in ("powershell.exe", "pwsh.exe") and
+  process.command_line : ("* -enc*", "* -encodedcommand*", "* -e *", "* -w hidden*", "* -windowstyle hidden*", "* -nop*", "* -noni*")
