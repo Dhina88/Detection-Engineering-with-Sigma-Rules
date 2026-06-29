@@ -1,0 +1,5 @@
+SecurityEvent
+| where EventID == 4688
+| where ProcessName endswith "\\reg.exe"
+| where CommandLine has_any ("save", "export")
+| where CommandLine has_any ("sam", "system", "security")

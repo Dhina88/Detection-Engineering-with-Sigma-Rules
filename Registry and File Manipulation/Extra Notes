@@ -1,0 +1,5 @@
+Engineering Rationale & Analysis Tips:
+
+Why this matters: Exporting these hives gives attackers local password hashes without triggering real-time LSASS runtime blocks.
+
+Triage Path: Track where the export output path leads. If the path leads to network shares or external drives, check for immediate exfiltration logs.

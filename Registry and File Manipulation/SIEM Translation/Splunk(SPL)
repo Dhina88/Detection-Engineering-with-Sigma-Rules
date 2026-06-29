@@ -1,0 +1,1 @@
+index=windows sourcetype="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" EventCode=1 Image="*\\reg.exe" (CommandLine="* save *" OR CommandLine="* export *") (CommandLine="*sam*" OR CommandLine="*system*" OR CommandLine="*security*")
