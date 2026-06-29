@@ -1,0 +1,5 @@
+Engineering Rationale & Analysis Tips:
+
+Why this matters: Malicious software needs an access handle to copy shellcode inside or dump the credentials out of lsass.exe. Monitoring GrantedAccess minimizes regular system operational noise.
+
+Triage Path: Check the code-signing state of the binary in SourceImage. If it's unsigned or running from AppData / Temp, escalate immediately.

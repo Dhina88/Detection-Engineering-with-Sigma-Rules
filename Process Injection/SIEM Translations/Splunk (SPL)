@@ -1,0 +1,1 @@
+index=windows sourcetype="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" EventCode=10 TargetImage="*\\lsass.exe" (GrantedAccess="0x1F0FFF" OR GrantedAccess="0x1010" OR GrantedAccess="0x1410") NOT (SourceImage="*\\msmpeng.exe" OR SourceImage="*\\svchost.exe")

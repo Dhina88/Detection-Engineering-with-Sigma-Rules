@@ -1,0 +1,5 @@
+DeviceProcessEvents
+| where TargetProcessName == "lsass.exe"
+| where MandatoryLabel != "System"
+| where ActionType == "ProcessAccessOpened"
+| where isnotempty(InitiatingProcessFileName)

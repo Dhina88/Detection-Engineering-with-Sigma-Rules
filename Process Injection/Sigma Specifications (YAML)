@@ -1,0 +1,28 @@
+title: Cross-Process Access OpenProcess to LSASS
+id: 9a3e214d-fa32-4712-a108-11ef842cc7bc
+status: stable
+description: Detects anomalous applications opening handles to LSASS with specific memory access masks indicative of process injection or credential dumping attempts.
+author: Detection Engineer Specialist
+date: 2026/06/28
+tags:
+    - attack.defense_evasion
+    - attack.privilege_escalation
+    - attack.t1055
+logsource:
+    product: windows
+    category: process_access
+detection:
+    selection:
+        TargetImage|endswith: '\lsass.exe'
+        GrantedAccess:
+            - '0x1F0FFF' # PROCESS_ALL_ACCESS
+            - '0x1010'   # PROCESS_VM_READ | PROCESS_QUERY_INFORMATION
+            - '0x1410'   # PROCESS_VM_READ | PROCESS_QUERY_INFORMATION | PROCESS_QUERY_LIMITED_INFORMATION
+    filter_legitimate:
+        SourceImage|endswith:
+            - '\msmpeng.exe'
+            - '\svchost.exe'
+    condition: selection and not filter_legitimate
+falsepositives:
+    - Local antivirus or EDR agents conducting legitimate security verification scan loops.
+level: critical
