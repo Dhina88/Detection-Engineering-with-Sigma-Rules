@@ -1,0 +1,2 @@
+iam where event.code in ("4728", "4732", "4756") and
+  winlog.event_data.TargetUserName : ("*Domain Admins*", "*Enterprise Admins*", "*Administrators*")

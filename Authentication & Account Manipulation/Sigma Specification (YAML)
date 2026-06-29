@@ -1,0 +1,26 @@
+title: User Added to High-Privilege Domain Group
+id: a8124bdf-ce3d-411a-b33c-ee912e847cd1
+status: stable
+description: Detects adding a user account to a high-privilege administrative directory security group (e.g., Domain Admins, Enterprise Admins).
+author: Detection Engineer Specialist
+date: 2026/06/28
+tags:
+    - attack.persistence
+    - attack.t1098
+logsource:
+    product: windows
+    service: security
+detection:
+    selection:
+        EventID:
+            - 4728 # Member added to security-enabled global group
+            - 4732 # Member added to security-enabled local group
+            - 4756 # Member added to security-enabled universal group
+        TargetUserName:
+            - '*Domain Admins*'
+            - '*Enterprise Admins*'
+            - '*Administrators*'
+    condition: selection
+falsepositives:
+    - Standard Identity Access Management lifecycle activities executed by authorized enterprise system administrators.
+level: high

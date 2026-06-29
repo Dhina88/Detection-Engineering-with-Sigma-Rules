@@ -1,0 +1,5 @@
+Engineering Rationale & Analysis Tips:
+
+Why this matters: Creating or escalating permissions provides a clean fallback mechanism if an attacker's primary entry vectors are discovered and blocked.
+
+Triage Path: Validate the operation against change management system records. If there is no corresponding ticket, contact the originating administrator immediately.

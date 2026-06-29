@@ -1,0 +1,1 @@
+index=windows sourcetype="XmlWinEventLog:Security" (EventCode=4728 OR EventCode=4732 OR EventCode=4756) (TargetUserName="*Domain Admins*" OR TargetUserName="*Enterprise Admins*" OR TargetUserName="*Administrators*")
